@@ -1,9 +1,68 @@
 {
   "name": "git-formatted-commit-message",
   "version": "0.0.0",
-  "description": "Tool for creating 'git commit' from predefined templates.",
+  "description": "Tool for creating a 'git commit' from predefined templates.",
   "main": "index.js",
   "author": "Szymon Standarski",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "target": "node",
+  "keywords": [
+    "git",
+    "commit",
+    "message format",
+    "format"
+  ],
+  "scripts": {
+    "test-coverage": "NODE_ENV=development jest --coverage",
+    "test": "NODE_ENV=development jest --verbose",
+    "test:console": "NODE_ENV=development jest --verbose false",
+    "test:watch": "NODE_ENV=development jest --watch",
+    "test:watch:non-console": "NODE_ENV=development jest --watch --verbose false",
+    "build": "webpack",
+    "build-type-script": "tsc",
+    "start": "nodemon ./src/index.js",
+    "start:live": "NODE_ENV=development nodemon --exec ./node_modules/.bin/ts-node -- ./src/index.ts",
+    "start:dist": "NODE_ENV=production nodemon ./dist/server.js",
+    "release": "standard-version",
+    "karma": "karma start"
+  },
+  "dependencies": {
+    "boxen": "^3.2.0",
+    "gradient-string": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/gradient-string": "^1.1.0",
+    "@types/gulp": "^4.0.6",
+    "@types/jest": "^24.0.13",
+    "@types/node": "^12.0.2",
+    "gulp": "^4.0.2",
+    "gulp-sftp-up4": "^0.1.8",
+    "jest": "^24.8.0",
+    "jest-cli": "^24.8.0",
+    "nodemon": "^1.19.0",
+    "path": "^0.12.7",
+    "standard-version": "^6.0.1",
+    "ts-jest": "^24.0.2",
+    "ts-loader": "^6.0.1",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.5",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "verbose": true,
+    "testRegex": "src/.*.(test|spec).(jsx?|tsx?)$",
+    "testEnvironment": "node",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "node"
+    ]
+  }
 }
