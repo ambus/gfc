@@ -29,14 +29,11 @@ describe("load-template", () => {
   it("should return template file", done => {
     loadTemplate().subscribe(
       (temp: Template) => {
-        console.warn(temp);
         expect(temp).toBeDefined();
         expect(temp.templateLines.length).toBe(1);
         done();
       },
-      err => {
-        console.warn(err);
-      }
+      err => {}
     );
   });
 });
