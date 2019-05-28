@@ -29,9 +29,12 @@
   },
   "dependencies": {
     "boxen": "^3.2.0",
+    "chalk": "^2.4.2",
     "gradient-string": "^1.2.0",
     "ora": "^3.4.0",
-    "rxjs": "^6.5.2"
+    "readline-sync": "^1.4.9",
+    "rxjs": "^6.5.2",
+    "simple-git": "^1.113.0"
   },
   "devDependencies": {
     "@types/gradient-string": "^1.1.0",
