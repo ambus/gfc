@@ -1,7 +1,6 @@
 import { loadTemplate } from "./load-template";
 import * as mock from "mock-fs";
 import { Template } from "../models/template";
-import { TemplateFileMockup } from "../../test/mockup/template-file.mockup";
 
 describe("load-template", () => {
   it("should export function to load template file", () => {
