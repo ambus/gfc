@@ -14,6 +14,24 @@ export const TemplateFileMockup = `{
                         "fix",
                         "feat"
                     ]
+                },
+                {
+                    "name": "scope",
+                    "type": "text",
+                    "textBefore": "(",
+                    "textAfter": "):",
+                    "question": "Scope:",
+                    "description": "Scope of affected module.",
+                    "data": []
+                },
+                {
+                    "name": "message",
+                    "type": "text",
+                    "textBefore": " ",
+                    "textAfter": "",
+                    "question": "Commit message:",
+                    "description": "Message of commit",
+                    "data": []
                 }
             ]
         }
