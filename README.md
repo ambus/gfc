@@ -7,7 +7,13 @@ Tool for creating a 'git commit' from predefined templates.
 ### TODO
 
 - [x] print logo
-- [ ] load template
+- [X] load template
+- [X] select input
+- [X] standard input
+- [X] build commit
+- [ ] add description line
+- [ ] add task id line
+- [ ] call git commit
 - ... more
 
 ### Dependencies
