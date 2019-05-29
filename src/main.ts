@@ -1,9 +1,10 @@
-import { getCommitTextFromInput } from "./get-input/get-input";
+import { getCommitTextFromInput, _readYN } from "./get-input/get-input";
 import { loadTemplate } from "./load-template/load-template";
 import { printLogo } from "./logo/logo";
 import { LogoType } from "./logo/logo-type";
 import { TemplateWithCommit } from "./models/template-with-commit";
-const simpleGit = require("simple-git")(__dirname);
+const simpleGit = require("simple-git")();
+import chalk from "chalk";
 
 export var main = function() {
   console.clear();
@@ -12,8 +13,19 @@ export var main = function() {
     .pipe(getCommitTextFromInput())
     .subscribe(
       (templateWithCommit: TemplateWithCommit) => {
-        // console.warn(templateWithCOmmit.commit);
-        // simpleGit.status((err, status) => console.log(status));
+        console.log(chalk.yellowBright.bold("Built commit:"));
+        console.log(chalk.cyanBright(templateWithCommit.commit));
+        if (_readYN("Execute commit?")) {
+          simpleGit.commit(templateWithCommit.commit, status => {
+            if (!status) {
+              console.error(chalk.bgGreenBright.bold("Done!"));
+            } else {
+              console.error(chalk.white.bold.bgRed(status));
+            }
+          });
+        } else {
+          console.warn(chalk.white.bold.bgRed("Aborted"));
+        }
       },
       err => {}
     );
