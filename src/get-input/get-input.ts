@@ -29,6 +29,10 @@ export const _readText = (question: string): string => {
   return readlineSync.question(_getFormatedQuestionText(question));
 };
 
+export const _readYN = (question: string): string => {
+  return readlineSync.keyInYN(_getFormatedQuestionText(question));
+};
+
 export const _getFormatedQuestionText = (question: string): string => {
   return chalk.black.bold.bgCyan(question);
 };
