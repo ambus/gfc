@@ -34,7 +34,7 @@ export const _readYN = (question: string): string => {
 };
 
 export const _getFormatedQuestionText = (question: string): string => {
-  return chalk.black.bold.bgCyan(question);
+  return chalk.blueBright.bold(question);
 };
 
 export function getCommitTextFromInput(): OperatorFunction<Template, TemplateWithCommit> {
