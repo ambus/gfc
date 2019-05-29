@@ -44,8 +44,7 @@
         },
         {
             "description": "body",
-            "startString": "\n",
-            "endString": "\n",
+            "startString": "\r\n\r\n",
             "lineFields": [
                 {
                     "name": "description",
@@ -60,7 +59,7 @@
         },
         {
             "description": "footer",
-            "startString": "\n",
+            "startString": "\r\n\r\n",
             "lineFields": [
                 {
                     "name": "description",
