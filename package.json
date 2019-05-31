@@ -1,6 +1,6 @@
 {
   "name": "git-formatted-commit-message",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Tool for creating a 'git commit' from predefined templates.",
   "main": "index.js",
   "author": "Szymon Standarski",
@@ -13,6 +13,9 @@
     "message format",
     "format"
   ],
+  "bin": {
+    "gfc": "./src/index.js"
+  },
   "scripts": {
     "test-coverage": "NODE_ENV=development jest --coverage",
     "test": "NODE_ENV=development jest --verbose",
@@ -42,6 +45,7 @@
     "@types/jest": "^24.0.13",
     "@types/mock-fs": "^3.6.30",
     "@types/node": "^12.0.2",
+    "del": "^4.1.1",
     "gulp": "^4.0.2",
     "gulp-sftp-up4": "^0.1.8",
     "jest": "^24.8.0",
