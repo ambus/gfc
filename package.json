@@ -1,6 +1,6 @@
 {
   "name": "git-formatted-commit-message",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Tool for creating a 'git commit' from predefined templates.",
   "main": "index.js",
   "author": "Szymon Standarski",
