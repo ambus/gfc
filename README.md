@@ -1,4 +1,4 @@
-# gfc ![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/ambus/gfc.svg)
+# git-fcm ![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/ambus/gfc.svg)
 
 ## git-formatted-commit-message
 
@@ -11,9 +11,10 @@ Tool for creating a 'git commit' from predefined templates.
 - [X] select input
 - [X] standard input
 - [X] build commit
-- [ ] add description line
-- [ ] add task id line
-- [ ] call git commit
+- [X] add description line
+- [X] add task id line
+- [X] call git commit
+- [ ] build bin
 - ... more
 
 ### Dependencies

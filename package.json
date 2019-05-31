@@ -1,5 +1,5 @@
 {
-  "name": "git-formatted-commit-message",
+  "name": "git-fcm",
   "version": "0.1.6",
   "description": "Tool for creating a 'git commit' from predefined templates.",
   "main": "index.js",
@@ -14,7 +14,7 @@
     "format"
   ],
   "bin": {
-    "gfc": "./src/index.js"
+    "git-fcm": "./main.bundle.js"
   },
   "scripts": {
     "test-coverage": "NODE_ENV=development jest --coverage",
