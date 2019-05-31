@@ -1,6 +1,6 @@
 {
   "name": "git-formatted-commit-message",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Tool for creating a 'git commit' from predefined templates.",
   "main": "index.js",
   "author": "Szymon Standarski",
@@ -47,6 +47,7 @@
     "@types/node": "^12.0.2",
     "del": "^4.1.1",
     "gulp": "^4.0.2",
+    "gulp-chmod": "^3.0.0",
     "gulp-sftp-up4": "^0.1.8",
     "jest": "^24.8.0",
     "jest-cli": "^24.8.0",
