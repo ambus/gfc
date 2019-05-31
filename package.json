@@ -48,6 +48,7 @@
     "del": "^4.1.1",
     "gulp": "^4.0.2",
     "gulp-chmod": "^3.0.0",
+    "gulp-header": "^2.0.7",
     "gulp-replace": "^1.0.0",
     "gulp-sftp-up4": "^0.1.8",
     "jest": "^24.8.0",
