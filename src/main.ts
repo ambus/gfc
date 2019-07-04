@@ -27,6 +27,8 @@ export var main = function() {
           console.warn(chalk.white.bold.bgRed("Aborted"));
         }
       },
-      err => {}
+      err => {
+        console.warn(chalk.white.bold.bgRed("Aborted"));
+      }
     );
 };
