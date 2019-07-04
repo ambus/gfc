@@ -14,7 +14,7 @@ export const _getInput = (lineField: LineField): string => {
     case LineFieldType.Select:
       return _readSelect(lineField.data, lineField.question);
     case LineFieldType.Text:
-      return _readText(lineField.question);
+      return _readText(lineField.question, lineField.minLength, lineField.maxLength);
     default:
       break;
   }
@@ -25,12 +25,22 @@ export const _readSelect = (options: string[], question: string): string => {
   return options[index];
 };
 
-export const _readText = (question: string): string => {
-  return readlineSync.question(_getFormatedQuestionText(question));
+export const _readText = (question: string, minLength: number, maxLength: number): string => {
+  let questionWithMaxAndMininfo = question + (minLength ? ` min: ${minLength} ` : "") + (maxLength ? `max: ${maxLength}` : "") + (minLength || maxLength ? ": " : "");
+  let returnedText = readlineSync.question(_getFormatedQuestionText(questionWithMaxAndMininfo), {
+    limit: (input: string) => {
+      if (typeof minLength !== undefined) {
+        if (input.length < minLength) return false;
+      }
+      if (typeof minLength !== undefined) {
+        if (input.length > maxLength) return false;
+      }
+      return true;
+    },
+    limitMessage: `Input another, please. Minimum length: ${minLength}, maximum length: ${maxLength}`
+  });
+  return returnedText;
 };
-// {limit: function(input) {
-//   return require('net').isIP(input); // Valid IP Address
-// }}
 
 export const _readYN = (question: string): boolean => {
   return readlineSync.keyInYN(_getFormatedQuestionText(question));
