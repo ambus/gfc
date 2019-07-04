@@ -145,11 +145,11 @@ Example template:
 - [X] build bin
 - [X] update Readme file - add info how to use this tools and template example
 - [X] add default template
-- [ ] describe all possible fields appearing in the template
-- [ ] minimal and maximum number of characters per line
+- [x] minimal and maximum number of characters 
 - [ ] npm publish
 - [ ] add ctrl+c or ESC to cancel
 - [ ] multiline text
+- [ ] describe all possible fields appearing in the template
 - ... more
 
 ### Dependencies

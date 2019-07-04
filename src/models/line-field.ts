@@ -7,5 +7,7 @@ export type LineField = {
     textAfter: string,
     question: string,
     description: string,
-    data: any;
+    data?: any;
+    minLength?: number;
+    maxLength?: number;
 }

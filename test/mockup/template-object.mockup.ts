@@ -22,7 +22,9 @@ export const templateObjectMockup: Template = {
           textAfter: "):",
           question: "Scope:",
           description: "Scope of affected module.",
-          data: []
+          data: [],
+          minLength: 5,
+          maxLength: 15
         },
         {
           name: "message",
@@ -31,7 +33,9 @@ export const templateObjectMockup: Template = {
           textAfter: "",
           question: "Commit message:",
           description: "Message of commit",
-          data: []
+          data: [],
+          minLength: 5,
+          maxLength: 85
         }
       ]
     }
