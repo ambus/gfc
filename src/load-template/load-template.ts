@@ -10,7 +10,7 @@ import { _getInput, _readYN } from "../get-input/get-input";
 
 let templateStandardFileLocation = "./.gfc.json";
 
-export function loadTemplate(): Observable<Template> {
+export function loadTemplate(fileLocation: string = templateStandardFileLocation): Observable<Template> {
   return Observable.create((observer: AnonymousSubject<Template>) => {
     let searchFileWithTemplateSiner = ora("Search file with template");
     searchFileWithTemplateSiner.color = "cyan";
@@ -19,34 +19,30 @@ export function loadTemplate(): Observable<Template> {
     let readFileSpiner = ora("Read template file");
     readFileSpiner.color = "cyan";
 
+    let errorFunction = () => {
+      searchFileWithTemplateSiner.fail("The template file not exist.");
+      if (_readYN(chalk.blueBright.bold("Load default AngularJS commit Style?"))) {
+        searchFileWithTemplateSiner.info("load default template...");
+        observer.next(default_template);
+        observer.complete();
+      } else {
+        observer.error(new Error("the template file not exist."));
+      }
+    };
+
     try {
-      if (fs.existsSync(templateStandardFileLocation)) {
+      if (fs.existsSync(fileLocation)) {
         searchFileWithTemplateSiner.succeed();
         readFileSpiner.start();
-        let template = JSON.parse(fs.readFileSync(templateStandardFileLocation, "utf8"));
+        let template = JSON.parse(fs.readFileSync(fileLocation, "utf8"));
         readFileSpiner.succeed();
         observer.next(template);
         observer.complete();
       } else {
-        searchFileWithTemplateSiner.fail("The template file does not exist.");
-        if (_readYN(chalk.blueBright.bold("Load default AngularJS commit Style?"))) {
-          searchFileWithTemplateSiner.info("load default template...");
-          observer.next(default_template);
-        } else {
-          console.warn("FFFF")
-          observer.error(new Error("the template file does not exist."));
-        }
-        observer.complete();
+        errorFunction();
       }
-    } catch (eer) {
-      readFileSpiner.fail("The default file with the commit template can't be loaded.");
-      if (_readYN(chalk.blueBright.bold("Load default AngularJS commit Style?"))) {
-        searchFileWithTemplateSiner.info("load default template...");
-        observer.next(default_template);
-      } else {
-        observer.error(new Error("The default file with the commit template can't be loaded."));
-      }
-      observer.complete();
+    } catch (err) {
+      errorFunction();
     }
   });
 }

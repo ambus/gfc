@@ -28,8 +28,11 @@ export const _readSelect = (options: string[], question: string): string => {
 export const _readText = (question: string): string => {
   return readlineSync.question(_getFormatedQuestionText(question));
 };
+// {limit: function(input) {
+//   return require('net').isIP(input); // Valid IP Address
+// }}
 
-export const _readYN = (question: string): string => {
+export const _readYN = (question: string): boolean => {
   return readlineSync.keyInYN(_getFormatedQuestionText(question));
 };
 

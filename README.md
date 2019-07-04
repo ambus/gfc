@@ -144,11 +144,12 @@ Example template:
 - [X] call git commit
 - [X] build bin
 - [X] update Readme file - add info how to use this tools and template example
+- [X] add default template
 - [ ] describe all possible fields appearing in the template
-- [ ] add default template
 - [ ] minimal and maximum number of characters per line
-- [ ] add ctrl+c or ESC to cancel
 - [ ] npm publish
+- [ ] add ctrl+c or ESC to cancel
+- [ ] multiline text
 - ... more
 
 ### Dependencies
