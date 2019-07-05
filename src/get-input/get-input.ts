@@ -16,7 +16,8 @@ export const _getInput = (lineField: LineField): string => {
     case LineFieldType.Text:
       return _readText(lineField.question, lineField.minLength, lineField.maxLength);
     default:
-      break;
+      console.warn(`Undefinded input type ${lineField.type}`);
+      return _readText(lineField.question, lineField.minLength, lineField.maxLength);
   }
 };
 
