@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/ambus/gfc/compare/v0.1.6...v0.2.0) (2019-07-05)
+
+
+### Build System
+
+* **gulp:** add gulp task's to build app ([0876159](https://github.com/ambus/gfc/commit/0876159))
+* **gulp:** add task to copy readme file ([d894005](https://github.com/ambus/gfc/commit/d894005))
+* **package:** add gulp-header package to modification main.bundle.js file ([65f3442](https://github.com/ambus/gfc/commit/65f3442))
+* **package:** add gulp-replace package to replace string file's ([226faf8](https://github.com/ambus/gfc/commit/226faf8))
+* **package:** change package name ([7a7ef28](https://github.com/ambus/gfc/commit/7a7ef28))
+* remove unused library ([7ae65b4](https://github.com/ambus/gfc/commit/7ae65b4))
+
+
+### Features
+
+* **input:** add suport for undefinded input type ([e2a2de7](https://github.com/ambus/gfc/commit/e2a2de7))
+* **input:** check max and min characters in input ([2269a6b](https://github.com/ambus/gfc/commit/2269a6b))
+* **main:** when user does not want to load default template app abort ([4bf2108](https://github.com/ambus/gfc/commit/4bf2108))
+* **template:** when file not exist, load default template ([6d5bff3](https://github.com/ambus/gfc/commit/6d5bff3))
+* **template:** when template file not exist, ask the user if it should be loaded defauld template ([78097b0](https://github.com/ambus/gfc/commit/78097b0))
+
+
+
 ### [0.1.6](https://github.com/ambus/gfc/compare/v0.1.5...v0.1.6) (2019-05-31)
 
 

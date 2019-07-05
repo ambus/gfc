@@ -1,6 +1,6 @@
 {
   "name": "git-fcm",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "description": "Tool for creating a 'git commit' from predefined templates.",
   "main": "index.js",
   "author": "Szymon Standarski",
