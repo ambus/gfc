@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/ambus/gfc/compare/v0.2.0...v0.2.1) (2019-07-05)
+
+
+### Build System
+
+* **package:** update repo info ([94da8be](https://github.com/ambus/gfc/commit/94da8be))
+
+
+
 ## [0.2.0](https://github.com/ambus/gfc/compare/v0.1.6...v0.2.0) (2019-07-05)
 
 
