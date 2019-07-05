@@ -49,7 +49,33 @@ Now you can use `git-fcm` on any repo/package without adding a dev dependency to
 
 ## Commit Template
 
-Currently, templates can only be JSON files.
+Insert template into `.gfc.json` file.
+
+Structure:
+```json
+{
+    "templateLines": [ //TemplateLine[]. Array of template lines
+        {
+            "description": "", //Description of line
+            "lineFields": [ //fields on the line 
+                {
+                    "name": "", //name of field
+                    "type": "",  //one of type: text, select, constText
+                    "textBefore": "",   //text added at the beginning of field
+                    "textAfter": "",    //text added at the end of field
+                    "question": "",     //question to display
+                    "description": "",  //description
+                    "data": {},         //currently not use, not required
+                    "minLength": 0,     //Min length of input text, not required
+                    "maxLength": 0      //Max length of input text, not required
+                }//,{...}
+            ],
+            "startString": "", //text added at the beginning of the line. not required
+            "endString": ""//text added at the end of the line. not required
+        }//,{...}
+    ]
+}
+```
 
 Example template:
 ```json
@@ -154,13 +180,15 @@ Example template:
 
 ### Dependencies
 
+https://github.com/anseki/readline-sync - synchronous Readline
+https://github.com/sindresorhus/ora - terminal spiner
+https://github.com/chalk/chalk - text styling
+https://github.com/bokub/gradient-string - text with gradient
+https://github.com/reactivex/rxjs - a reactive programming library for JavaScript
+https://github.com/steveukx/git-js - interface for running git commands
+
+#### Future dependencies
 https://github.com/drew-y/cliffy - CLI
-https://github.com/sindresorhus/yn - Yes/No
-https://github.com/sindresorhus/boxen - boxen
-https://github.com/sindresorhus/get-stdin - getStdin
-https://github.com/sindresorhus/ora - loading
-https://github.com/chalk/chalk - kolorwe teksty
-https://github.com/bokub/gradient-string - teksty z gradientem
 
 ### Stats
 
