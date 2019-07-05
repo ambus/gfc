@@ -3,10 +3,19 @@
   "version": "0.2.0",
   "description": "Tool for creating a 'git commit' from predefined templates.",
   "main": "index.js",
-  "author": "Szymon Standarski",
+  "author": {
+    "name": "Szymon Standarski",
+    "email": "s.standarski@gmail.com"
+  },
   "license": "MIT",
   "private": false,
   "target": "node",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ambus/gfc.git"
+  },
+  "bugs": "https://github.com/ambus/gfc/issues",
+  "homepage": "https://github.com/ambus/gfc",
   "keywords": [
     "git",
     "commit",
