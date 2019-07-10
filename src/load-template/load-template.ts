@@ -55,8 +55,8 @@ let default_template: Template = {
         {
           name: "type",
           type: LineFieldType.Select,
-          textBefore: "",
-          textAfter: "",
+          startString: "",
+          endString: "",
           question: "Commit type:",
           description: "",
           data: ["fix", "feat", "build", "ci", "docs", "perf", "refactor", "style", "test"]
@@ -64,8 +64,8 @@ let default_template: Template = {
         {
           name: "scope",
           type: LineFieldType.Text,
-          textBefore: "(",
-          textAfter: "):",
+          startString: "(",
+          endString: "):",
           question: "Scope:",
           description: "Scope of affected module.",
           data: []
@@ -73,8 +73,8 @@ let default_template: Template = {
         {
           name: "message",
           type: LineFieldType.Text,
-          textBefore: " ",
-          textAfter: "",
+          startString: " ",
+          endString: "",
           question: "Commit message:",
           description: "Message of commit",
           data: []
@@ -88,8 +88,8 @@ let default_template: Template = {
         {
           name: "description",
           type: LineFieldType.Text,
-          textBefore: "",
-          textAfter: "",
+          startString: "",
+          endString: "",
           question: "Description:",
           description:
             "Just as in the subject, use the imperative, present tense: 'change' not 'changed' nor 'changes'.\nThe body should include the motivation for the change and contrast this with previous behavior.",
@@ -104,8 +104,8 @@ let default_template: Template = {
         {
           name: "description",
           type: LineFieldType.Text,
-          textBefore: "",
-          textAfter: "",
+          startString: "",
+          endString: "",
           question: "Footer:",
           description:
             "The footer should contain any information about Breaking Changes and is also the place to reference GitHub issues that this commit Closes. \nBreaking Changes should start with the word BREAKING CHANGE: with a space or two newlines. \nThe rest of the commit message is then used for this.",
@@ -113,5 +113,9 @@ let default_template: Template = {
         }
       ]
     }
-  ]
+  ],
+  options: {
+    addStartStringWhenEmpty: false, 
+    addEndStringWhenEmpty: false
+  }
 };
