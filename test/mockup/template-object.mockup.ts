@@ -9,8 +9,8 @@ export const templateObjectMockup: Template = {
         {
           name: "commit type",
           type: LineFieldType.Select,
-          textBefore: "",
-          textAfter: "",
+          startString: "",
+          endString: "",
           question: "Commit type",
           description: "",
           data: ["fix", "feat"]
@@ -18,8 +18,8 @@ export const templateObjectMockup: Template = {
         {
           name: "scope",
           type: LineFieldType.Text,
-          textBefore: "(",
-          textAfter: "):",
+          startString: "(",
+          endString: "):",
           question: "Scope:",
           description: "Scope of affected module.",
           data: [],
@@ -29,8 +29,8 @@ export const templateObjectMockup: Template = {
         {
           name: "message",
           type: LineFieldType.Text,
-          textBefore: " ",
-          textAfter: "",
+          startString: " ",
+          endString: "",
           question: "Commit message:",
           description: "Message of commit",
           data: [],
@@ -39,5 +39,9 @@ export const templateObjectMockup: Template = {
         }
       ]
     }
-  ]
+  ],
+  options: {
+    addStartStringWhenEmpty: false,
+    addEndStringWhenEmpty: false
+  }
 };

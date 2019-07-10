@@ -4,8 +4,8 @@ import { LineFieldType } from "../../src/models/line-field-type";
 export const lineInputStandardMockup: LineField = {
   name: "commit type",
   type: LineFieldType.Text,
-  textBefore: "",
-  textAfter: "",
+  startString: "",
+  endString: "",
   question: "Commit type:",
   description: "",
   data: []

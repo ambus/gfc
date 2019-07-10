@@ -6,8 +6,8 @@ export const TemplateFileMockup = `{
                 {
                     "name": "commit type",
                     "type": "select",
-                    "textBefore": "",
-                    "textAfter": "",
+                    "startString": "",
+                    "endString": "",
                     "question": "Commit type",
                     "description": "",
                     "data": [
@@ -18,8 +18,8 @@ export const TemplateFileMockup = `{
                 {
                     "name": "scope",
                     "type": "text",
-                    "textBefore": "(",
-                    "textAfter": "):",
+                    "startString": "(",
+                    "endString": "):",
                     "question": "Scope:",
                     "description": "Scope of affected module.",
                     "data": []
@@ -27,8 +27,8 @@ export const TemplateFileMockup = `{
                 {
                     "name": "message",
                     "type": "text",
-                    "textBefore": " ",
-                    "textAfter": "",
+                    "startString": " ",
+                    "endString": "",
                     "question": "Commit message:",
                     "description": "Message of commit",
                     "data": []
