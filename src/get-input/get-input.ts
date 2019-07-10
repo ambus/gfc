@@ -6,6 +6,7 @@ import { TemplateWithCommit } from "../models/template-with-commit";
 import { Template } from "../models/template";
 import { map, catchError } from "rxjs/operators";
 import { TemplateLine } from "../models/template-line";
+import { Options } from "../models/options";
 
 var readlineSync = require("readline-sync");
 
@@ -56,17 +57,30 @@ export function getCommitTextFromInput(): OperatorFunction<Template, TemplateWit
     return source.pipe(
       map<Template, TemplateWithCommit>((template: Template) => {
         let commit: string = "";
+
+
         template.templateLines.forEach((templateLine: TemplateLine) => {
-          commit += templateLine.startString || "";
+          let textToAdd = "";
           templateLine.lineFields.forEach(async (lineField: LineField) => {
             let returnedInput = _getInput(lineField);
-            if (returnedInput) {
-              commit += lineField.textBefore || "";
-              commit += returnedInput;
-              commit += lineField.textAfter || "";
+            if (returnedInput && returnedInput !== "") {
+              textToAdd += lineField.startString || "";
+              textToAdd += returnedInput;
+              textToAdd += lineField.endString || "";
+            } else {
+              textToAdd += getTextToAddWithCondition([lineField.options, template.options], lineField.startString, "addStartStringWhenEmpty")
+              textToAdd += getTextToAddWithCondition([lineField.options, template.options], lineField.endString, "addEndStringWhenEmpty")
             }
           });
-          commit += templateLine.endString || "";
+          if(textToAdd && textToAdd !== "") {
+            commit += templateLine.startString || ""
+            commit += textToAdd;
+            commit += templateLine.endString || ""
+          } else {
+            commit += getTextToAddWithCondition([templateLine.options, template.options], templateLine.startString, "addStartStringWhenEmpty");
+            commit += getTextToAddWithCondition([templateLine.options, template.options], templateLine.endString, "addEndStringWhenEmpty")
+          }
+
         });
         return { template: template, commit: commit };
       }),
@@ -77,3 +91,11 @@ export function getCommitTextFromInput(): OperatorFunction<Template, TemplateWit
     );
   };
 }
+
+function getTextToAddWithCondition(options: Options[], text: string, optionsType: string): string {
+  if (!text || text.length === 0) return "";
+  let condition: boolean = options.every((option: Options) => {
+    return !!(typeof option === "undefined" || typeof option[optionsType] === "undefined" || option[optionsType]);
+  });
+  return condition ? text : "";
+};
