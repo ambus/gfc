@@ -30,7 +30,7 @@ Add an [`npm run` script](https://docs.npmjs.com/cli/run-script) to your _packag
 }
 ```
 
-Now you can use `npm run commit`.
+Now you can use `npm run commit` or `yarn commit`.
 
 ### As global bin
 
@@ -51,8 +51,8 @@ Now you can use `git-fcm` on any repo/package without adding a dev dependency to
 
 Insert template into `.gfc.json` file.
 
-Structure:
-```json
+### Structure:
+```ts
 {
     "templateLines": [ //TemplateLine[]. Array of template lines
         {
@@ -61,23 +61,42 @@ Structure:
                 {
                     "name": "", //name of field
                     "type": "",  //one of type: text, select, constText
-                    "textBefore": "",   //text added at the beginning of field
-                    "textAfter": "",    //text added at the end of field
+                    "startString": "",   //text added at the beginning of field
+                    "endString": "",    //text added at the end of field
                     "question": "",     //question to display
                     "description": "",  //description
                     "data": {},         //currently not use, not required
                     "minLength": 0,     //Min length of input text, not required
-                    "maxLength": 0      //Max length of input text, not required
+                    "maxLength": 0,      //Max length of input text, not required
+                    "options": {    //not required
+                        "addStartStringWhenEmpty": true,    //add text from the 'startString' field if the text for this line is empty
+                        "addEndStringWhenEmpty": true,      //add text from the 'endString' field if the text for this line is empty
+                    }
                 }//,{...}
             ],
             "startString": "", //text added at the beginning of the line. not required
-            "endString": ""//text added at the end of the line. not required
+            "endString": "",  //text added at the end of the line. not required
+            "options": {    //not required
+                "addStartStringWhenEmpty": true,    //add text from the 'startString' field if the text for this line is empty
+                "addEndStringWhenEmpty": true,      //add text from the 'endString' field if the text for this line is empty
+            }
         }//,{...}
-    ]
+    ],
+    "options": {    //not required
+        "addStartStringWhenEmpty": true,    //add text from the 'startString' field if the text from input or the whole line is empty
+        "addEndStringWhenEmpty": true,      //add text from the 'endString' field if the text from input or the whole line is empty
+    }
 }
 ```
 
-Example template:
+### Options
+In template, templateLines and templateFields you can set options:
+* addStartStringWhenEmpty - add text from the `startString` field if the text from input or the whole line is empty. If this options is set in main object refers to the entire template. If you set this options in `templateLines` or `templateField` this options refers to specific `templateLines` or `templateField`. **Default `true`.**
+* addEndStringWhenEmpty - add text from the `endString` field if the text from input or the whole line is empty. If this options is set in main object refers to the entire template. If you set this options in `templateLines` or `templateField` this options refers to specific `templateLines` or `templateField`. **Default `true`.**
+
+#### Child overwrites the globals parameters!
+
+### Example template:
 ```json
 {
     "templateLines": [
@@ -87,8 +106,8 @@ Example template:
                 {
                     "name": "type",
                     "type": "select",
-                    "textBefore": "",
-                    "textAfter": "",
+                    "startString": "",
+                    "endString": "",
                     "question": "Commit type:",
                     "description": "",
                     "data": [
@@ -106,8 +125,8 @@ Example template:
                 {
                     "name": "scope",
                     "type": "text",
-                    "textBefore": "(",
-                    "textAfter": "):",
+                    "startString": "(",
+                    "endString": "):",
                     "question": "Scope:",
                     "description": "Scope of affected module.",
                     "data": []
@@ -115,8 +134,8 @@ Example template:
                 {
                     "name": "message",
                     "type": "text",
-                    "textBefore": " ",
-                    "textAfter": "",
+                    "startString": " ",
+                    "endString": "",
                     "question": "Commit message:",
                     "description": "Message of commit",
                     "data": []
@@ -130,8 +149,8 @@ Example template:
                 {
                     "name": "description",
                     "type": "text",
-                    "textBefore": "",
-                    "textAfter": "",
+                    "startString": "",
+                    "endString": "",
                     "question": "Description:",
                     "description": "Just as in the subject, use the imperative, present tense: 'change' not 'changed' nor 'changes'.\nThe body should include the motivation for the change and contrast this with previous behavior.",
                     "data": []
@@ -145,15 +164,19 @@ Example template:
                 {
                     "name": "description",
                     "type": "text",
-                    "textBefore": "",
-                    "textAfter": "",
+                    "startString": "",
+                    "endString": "",
                     "question": "Footer:",
                     "description": "The footer should contain any information about Breaking Changes and is also the place to reference GitHub issues that this commit Closes. \nBreaking Changes should start with the word BREAKING CHANGE: with a space or two newlines. \nThe rest of the commit message is then used for this.",
                     "data": []
                 }
             ]
         }
-    ]
+    ],
+    "options": {
+        "addStartStringWhenEmpty": false,
+        "addEndStringWhenEmpty": false
+    }
 }
 ```
 
@@ -171,11 +194,12 @@ Example template:
 - [X] build bin
 - [X] update Readme file - add info how to use this tools and template example
 - [X] add default template
-- [x] minimal and maximum number of characters 
-- [ ] npm publish
+- [X] minimal and maximum number of characters 
+- [X] npm publish
+- [X] add option to conditionally add text at the begining of the line
+- [X] describe all possible fields appearing in the template
 - [ ] add ctrl+c or ESC to cancel
 - [ ] multiline text
-- [ ] describe all possible fields appearing in the template
 - ... more
 
 ### Dependencies
